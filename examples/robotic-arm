@@ -1,0 +1,33 @@
+
+  "@context": ["http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+               "https://github.com/Laboratoire-LACL/robotic-schema/robotic-context.jsonld"],
+  "@type": [ "Robot", "Arm" ],
+  "name": "KUKA TD",
+  "interactions": [
+    {
+      "@id": "_:rotation",
+      "name": "initiate item processing",
+      "@type": ["Property", "prosition", "MultiLevelState"],
+      "outputType": { "type": "number" },
+      "link": [
+        {
+          "href": "opcua://example.org/kuka/arm01/rotation",
+          "mediaType": "application/json"
+        }
+      ]
+    }, {
+      "name": "secure item",
+      "@type": ["Action", "capture", "StepUpCommand"],
+      "inputData":  { "type": "number" },
+      "actsUpon": "_:rotation",
+      "link": [
+        {
+          "href": "opcua://example.org/kuka/arm01/rotation",
+          "mediaType": "application/json"
+        }
+      ]
+    }
+      ]
+    }
+  ]
+}
